@@ -24,9 +24,37 @@ package BackRe.Q25304;
 //출력
 //구매한 물건의 가격과 개수로 계산한 총 금액이 영수증에 적힌 총 금액과 일치하면 Yes를 출력한다. 일치하지 않는다면 No를 출력한다.
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+        int totalPrice = sc.nextInt();
+        int totalCount = sc.nextInt();
+        int equalPrice = 0;
+
+        List<Item> items = new ArrayList<>();
+
+        for (int i = 0; i < totalCount; i++) {
+            int price = sc.nextInt();
+            int count = sc.nextInt();
+            equalPrice += price*count;
+            items.add(new Item(price, count));
+        }
+
+        if (totalPrice == equalPrice){
+            System.out.println("Yes");
+        }else {
+            System.out.println("No");
+        }
+    }
+}
+class Item{
+    int price, count;
+    Item(int price, int count){
+        this.price = price;
+        this.count = count;
     }
 }
